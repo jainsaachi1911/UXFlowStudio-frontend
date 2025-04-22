@@ -1,0 +1,406 @@
+/*──────────────────────────────────────────────────────────
+  Global Variables & Base Styles
+──────────────────────────────────────────────────────────*/
+:root {
+  --bg-light:       #FFFFFF;
+  --surface-light:  #F9FAFB;
+  --text-light:     #000000;
+  --text-secondary: #5E6C84;
+
+  --primary:        #1FAB89;
+  --primary-dark:   #066D15;
+
+  --font:           'Inter', sans-serif;
+  --radius:         8px;
+  --transition:     0.3s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg-light);
+  color: var(--text-light);
+  scroll-behavior: smooth;
+}
+
+/*──────────────────────────────────────────────────────────
+  Navbar Brand & Links
+──────────────────────────────────────────────────────────*/
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-brand img {
+  height: 80px;
+  width: auto;
+}
+
+.brand-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.brand-motto {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.navbar-nav .nav-link {
+  font-family: var(--font);
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: color var(--transition);
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--primary);
+  transition: width var(--transition);
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--primary);
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/*──────────────────────────────────────────────────────────
+  Tighter Hero Carousel Sizing & Layout
+──────────────────────────────────────────────────────────*/
+.hero-carousel .carousel-item {
+  height: 60vh;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .hero-carousel .carousel-item {
+    height: 65vh;
+  }
+}
+
+/*──────────────────────────────────────────────────────────
+  Hero Carousel: More Translucent Images
+──────────────────────────────────────────────────────────*/
+.hero-carousel .carousel-item img {
+  opacity: 0.6;              /* 60% opacity for a more see‑through look */
+  transition: opacity 0.3s;  /* smooth fade if the slide changes */
+}
+
+.hero-carousel img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-carousel .carousel-caption {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  z-index: 1; /* above the optional overlay */
+}
+
+.hero-carousel .carousel-caption h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.hero-carousel .carousel-caption p {
+  font-size: 1rem;
+}
+
+
+/*──────────────────────────────────────────────────────────
+  Hero Carousel: Larger, Bolder Caption Text
+──────────────────────────────────────────────────────────*/
+.hero-carousel .carousel-caption h1 {
+  font-size: 3rem;           /* increase title size */
+  font-weight: 600;          /* make it bold */
+  color: var(--text-light) !important;
+}
+
+.hero-carousel .carousel-caption p {
+  font-size: 1.25rem;        /* increase subtitle size */
+  font-weight: 500;          /* medium weight for readability */
+  color: var(--text-light) !important;
+}
+
+/* subtle dark overlay for readability */
+.hero-carousel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/*──────────────────────────────────────────────────────────
+  Services Section (with “Our Work”–style hover accents)
+──────────────────────────────────────────────────────────*/
+#services h2 {
+  font-size: 2.75rem;
+  margin-bottom: 2rem;
+  /* (keep your existing color or add an accent if you like) */
+}
+
+#services .service-card {
+  background: var(--surface-light);
+  border-radius: var(--radius);
+  border-top: 4px solid transparent;    /* for the hover accent bar */
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition),
+    border-top-color var(--transition);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+#services .service-card:hover {
+  background-color: rgba(31,171,137,0.07);  /* very light mint */
+  border-top-color: var(--primary);          /* green accent bar */
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+#services .service-card h5 {
+  font-size: 1.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+  transition: color var(--transition);
+}
+
+#services .service-card:hover h5 {
+  color: var(--primary);    /* title turns green */
+}
+
+#services .service-card p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-light);
+  transition: color var(--transition);
+}
+
+#services .service-card:hover p {
+  color: var(--primary-dark);  /* description turns dark green */
+}
+
+#services .service-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+/*──────────────────────────────────────────────────────────
+  Process Section
+──────────────────────────────────────────────────────────*/
+#process {
+  background: var(--surface-light);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.step-number {
+  width: 3rem; height: 3rem;
+  margin: 0 auto 1rem;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-family: var(--font);
+  position: relative; /* lift above the connector */
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  #process .row {
+    position: relative;
+  }
+  /* full-width connector line behind all steps */
+  #process .row::before {
+    content: "";
+    position: absolute;
+    top: 1.75rem; /* centerline of circles */
+    left: 0; right: 0;
+    height: 2px;
+    background: #E5E7EB;
+    z-index: 0;
+  }
+}
+
+/*─────────────────────────────────────────
+  Our Work: Two‑Column Card Grid Styles
+─────────────────────────────────────────*/
+#portfolio {
+  /* center everything inside, including our inline-block heading */
+  text-align: center;
+  padding: 4rem 0;
+}
+
+#portfolio h2 {
+  display: inline-block;       /* shrink to text width */
+  margin: 0 auto 2rem;         /* auto left/right to center */
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  position: relative;
+}
+
+#portfolio h2::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 2px;
+  margin: 0.5rem auto 0;
+}
+
+.work-card {
+  background: var(--surface-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-align: center;
+  border-top: 4px solid transparent;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition),
+    border-top  var(--transition);
+}
+
+.work-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+  background-color: rgba(30, 201, 158, 0.07); /* very light mint */
+  border-top-color: var(--primary);           /* green accent bar */
+}
+
+.work-card img {
+  display: inline-block;    /* allow margin-auto centering */
+  margin: 0 auto;
+  max-height: 300px;
+  width: auto;              /* preserve aspect ratio */
+  object-fit: cover;
+}
+
+.work-card .card-body {
+  padding: 1.5rem;
+}
+
+.work-card .card-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  transition: color var(--transition);
+}
+
+.work-card:hover .card-title {
+  color: var(--primary);    /* title turns green */
+}
+
+.work-card .card-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  transition: color var(--transition);
+}
+
+.work-card:hover .card-text {
+  color: var(--primary-dark); /* deep green on hover */
+}
+
+/* Optional “reveal on scroll” */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--delay), transform 0.6s var(--delay);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/*──────────────────────────────────────────────────────────
+  Testimonials Section
+──────────────────────────────────────────────────────────*/
+#testimonials {
+  padding: 4rem 0;
+  background: var(--surface-light);
+  text-align: center;
+}
+
+#testimonials img {
+  width: 100px; height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 4px solid var(--surface-light);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+blockquote {
+  font-style: italic;
+  font-family: var(--font);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
+/*──────────────────────────────────────────────────────────
+  Contact Section
+──────────────────────────────────────────────────────────*/
+#contact {
+  padding: 4rem 0;
+  font-family: var(--font);
+}
+
+#contactForm .form-control {
+  border-radius: var(--radius);
+  font-family: var(--font);
+}
+
+#contactForm button {
+  background: var(--primary);
+  border: none;
+  padding: 0.6rem 2rem;
+  font-family: var(--font);
+  color: #fff;
+}
+
+/*──────────────────────────────────────────────────────────
+  Reveal on Scroll
+──────────────────────────────────────────────────────────*/
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--delay), transform 0.6s var(--delay);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
