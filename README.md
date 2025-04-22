@@ -1,6 +1,6 @@
 # UXFlow Studio
 
-![Homepage Screenshot](assets/screenshot.png)
+![Homepage Screenshot](assets/screenshots.png)
 
 ## Description
 
