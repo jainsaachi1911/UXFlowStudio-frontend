@@ -25,9 +25,3 @@ UXFlow Studio is a clean, modern UI/UX front-end template showcasing a fictional
 - Bootstrap 5  
 - Google Fonts (Inter)  
 - Bootstrap Icons  
-
-## Installation & Usage
-
-1. **Clone the repository**  
-   ```bash
-   git clone https://github.com/your-username/uxflow-studio.git
